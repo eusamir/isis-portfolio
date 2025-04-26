@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 // eslint-disable-next-line camelcase
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, Bebas_Neue } from 'next/font/google'
 import './globals.css'
+import { Details } from '@/presentation/shared/components/layout/Details'
+import { Header } from '@/presentation/shared/components/layout/Header'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -11,6 +13,11 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+})
+const bebasNeue = Bebas_Neue({
+  variable: '--font-bebas-neue',
+  subsets: ['latin'],
+  weight: '400',
 })
 
 export const metadata: Metadata = {
@@ -26,8 +33,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} antialiased`}
       >
+        <Details />
+        <Header />
         {children}
       </body>
     </html>

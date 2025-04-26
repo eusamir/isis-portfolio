@@ -9,7 +9,7 @@ export class HeroSectionGatewayGraphql implements HeroSectionGateway {
 
   async getHeroSection(): Promise<HeroSection | null> {
     const result = await this.graphqlClient.query<{
-      isisFotosSchemas: {
+      heroSectionSchemas: {
         instagram: string
         tiktok: string
         messenger: string
@@ -19,7 +19,7 @@ export class HeroSectionGatewayGraphql implements HeroSectionGateway {
     }>({
       query: gql`
         {
-          isisFotosSchemas {
+          heroSectionSchemas {
             instagram
             tiktok
             messenger
@@ -32,7 +32,7 @@ export class HeroSectionGatewayGraphql implements HeroSectionGateway {
       `
     })
 
-    const resultSocials = result?.isisFotosSchemas[0]
+    const resultSocials = result?.heroSectionSchemas[0]
 
     if (!resultSocials) return null
 

@@ -26,7 +26,6 @@ export class OnStageGalleryGatewayGraphql implements OnStageGalleryGateway {
 
     const data = result?.onStageGallerySections[0]
 
-    console.log(data)
 
     if (!data) return null
 
