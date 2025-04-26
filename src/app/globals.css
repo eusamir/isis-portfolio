@@ -13,7 +13,7 @@
   --font-cormorant: 'Cormorant Garamond', serif;
   --font-playfair: 'Playfair Display', serif;
   --font-bebas: 'Bebas Neue', sans-serif;
-
+  --font-inter: 'Inter', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,7 +29,7 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--foreground);
   color: var(--foreground);
   font-family: var(--font-bebas);
 }
