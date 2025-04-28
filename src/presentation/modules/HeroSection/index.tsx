@@ -1,3 +1,4 @@
+import { makePageGateway } from '@/infra/factories/makePageGateway'
 import {
   GoogleLogo,
   InstagramLogo,
@@ -5,8 +6,19 @@ import {
   TiktokLogo,
 } from '@phosphor-icons/react/dist/ssr'
 import Image from 'next/image'
+import Link from 'next/link'
 
-export function HeroSection() {
+export async function HeroSection() {
+  const { heroSection } = makePageGateway()
+  const result = await heroSection.getHeroSection()
+  const resultSocials = [
+    result?.props.instagram,
+    result?.props.tiktok,
+    result?.props.email,
+    result?.props.messenger,
+  ]
+  const socialIcons = [InstagramLogo, TiktokLogo, GoogleLogo, MessengerLogo]
+
   return (
     <section
       className="flex-1 flex justify-center bg-cover bg-center"
@@ -24,26 +36,34 @@ export function HeroSection() {
             Isis Andrade
           </h1>
           <div className="flex gap-3 mt-5">
-            {[InstagramLogo, TiktokLogo, GoogleLogo, MessengerLogo].map(
-              (Icon, idx) => (
-                <div
-                  key={idx}
-                  className="bg-olive p-2 rounded-full hover:scale-110 transition cursor-pointer"
-                >
-                  <Icon size={25} color="#FFF" weight="bold" />
-                </div>
-              ),
+            {result && (
+              <>
+                {resultSocials.map((url, idx) => {
+                  const Icon = socialIcons[idx]
+                  return (
+                    url && (
+                      <Link key={idx} href={url}>
+                        <div className="bg-olive p-2 rounded-full hover:scale-110 transition cursor-pointer">
+                          <Icon size={25} color="#FFF" weight="bold" />
+                        </div>
+                      </Link>
+                    )
+                  )
+                })}
+              </>
             )}
           </div>
         </div>
         <div className="relative pb-8">
-          <Image
-            src="/principal.png"
-            alt="Principal"
-            width={600}
-            height={300}
-            className="rounded-2xl mt-[30%]"
-          />
+          {result?.props.url && (
+            <Image
+              src={result.props.url}
+              alt="Principal"
+              width={600}
+              height={300}
+              className="rounded-2xl mt-[30%]"
+            />
+          )}
         </div>
       </div>
     </section>
