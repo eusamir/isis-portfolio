@@ -3,7 +3,17 @@
 import { useState } from 'react'
 import { Sidebar } from '../Sidebar'
 
-export function Burguer() {
+interface SocialLink {
+  url: string
+  name: string
+}
+
+interface SidebarProps {
+  socialLinks: SocialLink[]
+}
+
+
+export function Burguer({ socialLinks }: SidebarProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -32,7 +42,7 @@ export function Burguer() {
 
       {isOpen && (
         <div className="fixed top-0 right-0 h-full w-full sm:w-[300px] md:w-[400px] bg-olive text-white p-4 sm:p-6 z-40 shadow-lg">
-          <Sidebar />
+          <Sidebar socialLinks={socialLinks}/>
         </div>
       )}
     </>
