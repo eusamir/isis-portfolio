@@ -9,7 +9,7 @@ export async function Curriculo() {
 
   return (
     <section
-      className="flex w-full px-4 sm:px-8 md:px-25 lg:px-25 py-3 sm:py-5 h-auto sm:h-120"
+      className="flex w-full px-4 sm:px-8 md:px-25 lg:px-25 py-3 sm:py-5 h-auto mb-20"
       id="curriculum-vitae"
     >
       <div className="flex sm:flex-row border-b-2 sm:border-b-3 md:border-b-5 border-[#5A5F51] w-full justify-between items-center py-5 sm:py-10 md:py-15">
