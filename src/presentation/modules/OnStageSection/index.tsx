@@ -1,5 +1,5 @@
 import { makePageGateway } from '@/infra/factories/makePageGateway'
-import Image from 'next/image'
+import { ImagesContainer } from './imagesContainer'
 
 export async function Onstage() {
   const { onStageGallery, showreel } = makePageGateway()
@@ -17,17 +17,8 @@ export async function Onstage() {
         {result && (
           <>
             {result.props.url.map((src, index) => (
-              <div
-                key={index}
-                className="rounded-md md:rounded-2xl overflow-hidden"
-              >
-                <Image
-                  src={src}
-                  alt={`Imagem ${index + 1}`}
-                  width={600}
-                  height={280}
-                  className="rounded-md md:rounded-2xl object-cover w-full"
-                />
+              <div key={index}>
+                <ImagesContainer src={src} />
               </div>
             ))}
           </>
@@ -39,6 +30,9 @@ export async function Onstage() {
             <div className="rounded-2xl w-full overflow-hidden">
               <video
                 src={showreelData.props.url}
+                autoPlay={true}
+                muted
+                loop={true}
                 controls
                 className="w-full h-auto sm:h-[400px] md:h-[500px] lg:h-[720px] rounded-2xl object-cover"
               />

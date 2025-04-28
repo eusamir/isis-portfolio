@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { Sidebar } from '../Sidebar'
+import { motion, AnimatePresence } from 'framer-motion'
+
 
 interface SocialLink {
   url: string
@@ -41,9 +43,20 @@ export function Burguer({ socialLinks }: SidebarProps) {
       </button>
 
       {isOpen && (
-        <div className="fixed top-0 right-0 h-full w-full sm:w-[300px] md:w-[400px] bg-olive text-white p-4 sm:p-6 z-40 shadow-lg">
-          <Sidebar socialLinks={socialLinks}/>
-        </div>
+        <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="sidebar"
+            initial={{ x: '100%', opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: '100%', opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 70, damping: 15 }}
+            className="fixed top-0 right-0 h-full w-full sm:w-[300px] md:w-[400px] bg-olive text-white p-4 sm:p-6 z-40 shadow-lg"
+          >
+            <Sidebar socialLinks={socialLinks} />
+          </motion.div>
+        )}
+      </AnimatePresence>
       )}
     </>
   )

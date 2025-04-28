@@ -1,5 +1,5 @@
 import { makePageGateway } from '@/infra/factories/makePageGateway'
-import Image from 'next/image'
+import { ImagesContainer } from './imagesContainer'
 
 export async function Gallery() {
   const { imagesGallery } = makePageGateway()
@@ -11,17 +11,8 @@ export async function Gallery() {
         {result && (
           <>
             {result.props.url.map((src) => (
-              <div
-                className="overflow-hidden rounded-sm md:rounded-2xl"
-                key={src}
-              >
-                <Image
-                  src={src}
-                  alt={`Imagem`}
-                  width={600}
-                  height={280}
-                  className="object-cover w-full rounded-sm md:rounded-2xl"
-                />
+              <div key={src}>
+                <ImagesContainer src={src} />
               </div>
             ))}
           </>

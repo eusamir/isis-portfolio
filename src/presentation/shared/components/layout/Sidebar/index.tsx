@@ -20,19 +20,13 @@ export function Sidebar({ socialLinks }: SidebarProps) {
     const sections = document.querySelectorAll('section[id]')
     const observer = new IntersectionObserver(
       (entries) => {
-        const visibleSections = entries.filter(entry => entry.isIntersecting)
-        if (visibleSections.length > 0) {
-          // Escolher a seção com maior área visível
-          const mostVisibleSection = visibleSections.reduce((max, entry) =>
-            entry.intersectionRatio > max.intersectionRatio ? entry : max
-          )
-          setActiveSection(`#${mostVisibleSection.target.id}`)
-        }
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`)
+          }
+        })
       },
-      {
-        rootMargin: '0px 0px -50% 0px', // melhora um pouco o ponto de ativação
-        threshold: Array.from({ length: 101 }, (_, i) => i / 100), // 0, 0.01, 0.02, ..., 1
-      }
+      { rootMargin: '0px 0px -20% 0px', threshold: 0.1 },
     )
 
     sections.forEach((section) => observer.observe(section))

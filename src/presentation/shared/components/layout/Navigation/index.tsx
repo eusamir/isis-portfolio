@@ -6,24 +6,19 @@ import { useState, useEffect } from 'react'
 export function Navigation() {
   const [activeSection, setActiveSection] = useState('')
 
-  console.log(activeSection)
-
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]')
     const observer = new IntersectionObserver(
       (entries) => {
-        const visibleSections = entries.filter((entry) => entry.isIntersecting)
-        if (visibleSections.length > 0) {
-          // Escolher a seção com maior área visível
-          const mostVisibleSection = visibleSections.reduce((max, entry) =>
-            entry.intersectionRatio > max.intersectionRatio ? entry : max,
-          )
-          setActiveSection(`#${mostVisibleSection.target.id}`)
-        }
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`)
+          }
+        })
       },
       {
-        rootMargin: '0px 0px -50% 0px', // melhora um pouco o ponto de ativação
-        threshold: Array.from({ length: 101 }, (_, i) => i / 100), // 0, 0.01, 0.02, ..., 1
+        rootMargin: '0px 0px -70% 0px',
+        threshold: 0.1,
       },
     )
 
@@ -31,6 +26,10 @@ export function Navigation() {
 
     return () => sections.forEach((section) => observer.unobserve(section))
   }, [])
+
+  const handleLinkClick = (href: string) => {
+    setActiveSection(href)
+  }
 
   const getLinkClass = (href: string) => {
     return `text-[20px] hover:brightness-90 transition ${
@@ -40,19 +39,32 @@ export function Navigation() {
 
   return (
     <div className="hidden md:flex gap-6 font-playfair">
-      <Link href="#portfolio" className={getLinkClass('#portfolio')}>
+      <Link
+        href="#portfolio"
+        className={getLinkClass('#portfolio')}
+        onClick={() => handleLinkClick('#portfolio')}
+      >
         Portfolio
       </Link>
-      <Link href="#gallery" className={getLinkClass('#gallery')}>
+      <Link
+        href="#gallery"
+        className={getLinkClass('#gallery')}
+        onClick={() => handleLinkClick('#gallery')}
+      >
         Gallery
       </Link>
       <Link
         href="#curriculum-vitae"
         className={getLinkClass('#curriculum-vitae')}
+        onClick={() => handleLinkClick('#curriculum-vitae')}
       >
         Curriculum Vitae
       </Link>
-      <Link href="#on-stage" className={getLinkClass('#on-stage')}>
+      <Link
+        href="#on-stage"
+        className={getLinkClass('#on-stage')}
+        onClick={() => handleLinkClick('#on-stage')}
+      >
         On stage
       </Link>
     </div>
