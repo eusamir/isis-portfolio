@@ -2,7 +2,7 @@
 
 import {
   Globe,
-  CaretDown,
+  // CaretDown,
   InstagramLogo,
   TiktokLogo,
   GoogleLogo,
@@ -50,7 +50,7 @@ export function Sidebar() {
         <div className="flex items-center gap-2 mb-10 mt-4">
           <Globe size={25} />
           <h1 className="text-2xl font-medium">English</h1>
-          <CaretDown size={25} className="ml-1" />
+          {/* <CaretDown size={25} className="ml-1" /> */}
         </div>
         <nav className="flex flex-col gap-6 font-playfair">
           <Link href="#portfolio" className={getLinkClass('#portfolio')}>

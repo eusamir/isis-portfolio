@@ -25,13 +25,24 @@ export function Footer() {
           )}
         </div>
       </div>
-      <div className="flex justify-between items-center">
-        <p className="font-inter font-bold opacity-50 text-sm">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0">
+        <p className="font-inter font-bold opacity-50 text-xs sm:text-sm text-center sm:text-left">
           © 2025 Samir Andrade. Todos os direitos reservados.
         </p>
-        <Link href={'https://samir-andrade.vercel.app/'} className="flex gap-1">
-          <p className="font-inter font-bold text-md">Developed by</p>
-          <Image src={'/samLogo.svg'} width={70} height={70} alt="" />
+        <Link
+          href={'https://samir-andrade.vercel.app/'}
+          className="flex gap-1 items-center"
+        >
+          <p className="font-inter font-bold text-sm sm:text-md">
+            Developed by
+          </p>
+          <Image
+            src={'/samLogo.svg'}
+            width={50}
+            height={50}
+            className="sm:w-[70px] sm:h-[70px]"
+            alt="Logo Samir"
+          />
         </Link>
       </div>
     </section>
