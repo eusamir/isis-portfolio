@@ -33,7 +33,7 @@ export async function Onstage() {
           </>
         )}
       </div>
-      <div className="flex flex-col items-center gap-3 sm:gap-5 w-full max-w-[76rem] mx-auto">
+      <div className="flex flex-col w-full items-center gap-3 sm:gap-5 mx-auto md:w-[95%]">
         {showreelData && (
           <>
             <div className="rounded-2xl w-full overflow-hidden">
