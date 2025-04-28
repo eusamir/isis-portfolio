@@ -6,32 +6,33 @@ import { useState, useEffect } from 'react'
 export function Navigation() {
   const [activeSection, setActiveSection] = useState('')
 
+  console.log(activeSection)
+
   useEffect(() => {
-    const sections = document.querySelectorAll('section[id]') // só sections que têm id
+    const sections = document.querySelectorAll('section[id]')
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(`#${entry.target.id}`)
-          }
-        })
+        const visibleSections = entries.filter((entry) => entry.isIntersecting)
+
+        if (visibleSections.length > 0) {
+          // Ordena as seções pela maior porcentagem visível
+          const mostVisibleSection = visibleSections.sort(
+            (a, b) => b.intersectionRatio - a.intersectionRatio,
+          )[0]
+
+          setActiveSection(`#${mostVisibleSection.target.id}`)
+        }
       },
       {
-        rootMargin: '0px 0px -70% 0px', // dispara o evento antes da section chegar no topo
-        threshold: 0,
+        rootMargin: '0px 0px -20% 0px', // Menor margem para ser mais preciso
+        threshold: [0, 0.25, 0.5, 0.75, 1], // Diferentes estágios de visibilidade
       },
     )
 
-    sections.forEach((section) => {
-      observer.observe(section)
-    })
+    sections.forEach((section) => observer.observe(section))
 
-    return () => {
-      sections.forEach((section) => {
-        observer.unobserve(section)
-      })
-    }
+    return () => sections.forEach((section) => observer.unobserve(section))
   }, [])
 
   const getLinkClass = (href: string) => {
