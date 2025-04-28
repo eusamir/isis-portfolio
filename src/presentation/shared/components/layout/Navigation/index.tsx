@@ -10,23 +10,20 @@ export function Navigation() {
 
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]')
-
     const observer = new IntersectionObserver(
       (entries) => {
         const visibleSections = entries.filter((entry) => entry.isIntersecting)
-
         if (visibleSections.length > 0) {
-          // Ordena as seções pela maior porcentagem visível
-          const mostVisibleSection = visibleSections.sort(
-            (a, b) => b.intersectionRatio - a.intersectionRatio,
-          )[0]
-
+          // Escolher a seção com maior área visível
+          const mostVisibleSection = visibleSections.reduce((max, entry) =>
+            entry.intersectionRatio > max.intersectionRatio ? entry : max,
+          )
           setActiveSection(`#${mostVisibleSection.target.id}`)
         }
       },
       {
-        rootMargin: '0px 0px -20% 0px', // Menor margem para ser mais preciso
-        threshold: [0, 0.25, 0.5, 0.75, 1], // Diferentes estágios de visibilidade
+        rootMargin: '0px 0px -50% 0px', // melhora um pouco o ponto de ativação
+        threshold: Array.from({ length: 101 }, (_, i) => i / 100), // 0, 0.01, 0.02, ..., 1
       },
     )
 
