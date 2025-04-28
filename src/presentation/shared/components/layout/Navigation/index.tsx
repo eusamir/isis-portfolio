@@ -41,7 +41,7 @@ export function Navigation() {
   }
 
   return (
-    <div className="flex gap-6 font-playfair">
+    <div className="hidden md:flex gap-6 font-playfair">
       <Link href="#portfolio" className={getLinkClass('#portfolio')}>
         Portfolio
       </Link>

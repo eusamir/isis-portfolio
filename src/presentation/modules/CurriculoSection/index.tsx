@@ -3,7 +3,7 @@ import { DownloadSimple } from '@phosphor-icons/react/dist/ssr'
 export function Curriculo() {
   return (
     <section
-      className="flex w-full px-10 sm:px-8 md:px-25 py-5"
+      className="flex w-full px-10 sm:px-8 md:px-25 py-5 h-120"
       id="curriculum-vitae"
     >
       <div className="flex border-b-5 border-[#5A5F51] w-full justify-between items-center py-15">
