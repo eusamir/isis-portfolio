@@ -1,13 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond&family=Inter&family=Playfair+Display&display=swap');
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
+  --olive-green: #5A5F51;
 
-@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-cormorant: 'Cormorant Garamond', serif;
   --font-playfair: 'Playfair Display', serif;
@@ -15,20 +16,13 @@
   --font-inter: 'Inter', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --olive-green: #5A5F51;
-  }
-}
 
 .bg-olive {
   background-color: var(--olive-green);
 }
 
 body {
-  background: var(--foreground);
-  color: var(--foreground);
+  background: var(--background);
+  color: var(--background);
   font-family: var(--font-bebas);
 }

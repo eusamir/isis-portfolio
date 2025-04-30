@@ -61,7 +61,7 @@ export function Sidebar({ socialLinks }: SidebarProps) {
         <div className="flex items-center gap-2 mb-10 mt-4">
           {/* ... */}
         </div>
-        <nav className="flex flex-col gap-6 font-playfair">
+        <nav className="flex flex-col gap-6 font-playfair" style={{ fontFamily: 'Playfair' }}>
           <Link href="#portfolio" className={getLinkClass('#portfolio')}>Portfolio</Link>
           <Link href="#gallery" className={getLinkClass('#gallery')}>Gallery</Link>
           <Link href="#curriculum-vitae" className={getLinkClass('#curriculum-vitae')}>Curriculum Vitae</Link>

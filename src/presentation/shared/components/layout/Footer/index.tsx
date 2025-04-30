@@ -53,14 +53,20 @@ export async function Footer() {
         </div>
       </div>
       <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0">
-        <p className="font-inter font-bold opacity-50 text-xs sm:text-sm text-center sm:text-left">
+        <p
+          className="font-inter font-bold opacity-50 text-xs sm:text-sm text-center sm:text-left"
+          style={{ fontFamily: 'Inter' }}
+        >
           © 2025 Samir Andrade. Todos os direitos reservados.
         </p>
         <Link
           href={'https://samir-andrade.vercel.app/'}
           className="flex gap-1 items-center"
         >
-          <p className="font-inter font-bold text-sm sm:text-md">
+          <p
+            className="font-inter font-bold text-sm sm:text-md"
+            style={{ fontFamily: 'Inter' }}
+          >
             Developed by
           </p>
           <Image

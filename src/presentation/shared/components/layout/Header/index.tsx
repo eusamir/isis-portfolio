@@ -14,7 +14,10 @@ export async function Header() {
   ]
   return (
     <div className="flex w-full justify-between items-center bg-olive h-24 fixed -px-2 md:px-10 z-1">
-      <h1 className="md:text-[40px] text-[30px] font-cormorant ml-10">
+      <h1
+        className="md:text-[40px] text-[30px] ml-10"
+        style={{ fontFamily: 'Cormorant Garamond' }}
+      >
         Isis Andrade
       </h1>
       <div className="absolute left-1/2 transform -translate-x-1/2">
