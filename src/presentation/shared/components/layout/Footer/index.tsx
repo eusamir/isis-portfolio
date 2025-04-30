@@ -55,7 +55,7 @@ export async function Footer() {
       <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0">
         <p
           className="font-inter font-bold opacity-50 text-xs sm:text-sm text-center sm:text-left"
-          style={{ fontFamily: 'Inter' }}
+          style={{ fontFamily: 'var(--font-inter)' }}
         >
           © 2025 Samir Andrade. Todos os direitos reservados.
         </p>
@@ -65,7 +65,7 @@ export async function Footer() {
         >
           <p
             className="font-inter font-bold text-sm sm:text-md"
-            style={{ fontFamily: 'Inter' }}
+            style={{ fontFamily: 'var(--font-inter)' }}
           >
             Developed by
           </p>
